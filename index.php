@@ -3,10 +3,7 @@
 	// Variables
 	$source = 'content';
 	$output = 'html';
-	$url = 'http://localhost:8888/build/markdown-to-html/html/';
-	
-	// Files to exclude from the search
-	$exclude = array('index.html','.DS_Store','.','..');
+	$url = 'http://localhost:8888/build/markdown-to-html/html';
 	
 	// Include Parsedown
 	include 'lib/Parsedown.php';
@@ -26,6 +23,7 @@
 	// Set $sidebar variable
 	$sidebar = '';
 	
+	// Run through the files first and create the nav
 	foreach ($articles as $key => $article) {
 		// list the file name
 		$file = basename($article);
@@ -39,12 +37,12 @@
 		// Remove file extension
 		$file = str_replace('.md', '', $file);
 				
-		$sidebar .= '<li><a href="'.$url.'.'.$folder.'/'.$file.'.html">'.$file.'</a></li>';
+		$sidebar .= '<li><a href="'.$url.$folder.$file.'.html">'.$file.'</a></li>';
 	}
 	
 	
 	
-	// Loop through fiels and get their content
+	// Loop through files and get their content
 	foreach ($articles as $key => $article) {
 		
 		// list the file name

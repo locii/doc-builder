@@ -22,6 +22,7 @@
 	
 	// Set $sidebar variable
 	$sidebar = '';
+	$files = '';
 	
 	// Run through the files first and create the nav
 	foreach ($articles as $key => $article) {
@@ -95,7 +96,18 @@
 		// Write the file
 		file_put_contents($output . '/' . $folder .'/'.$file.'.html', $markup);
 		
-		echo 'Success';
+		if(file_exists($output . '/' . $folder .'/'.$file.'.html')) {
+			$files .= '<li>';
+			$files .= $file;
+			$files .= '</li>';
+		}
 	}
-
-?>			
+	
+	?>
+	
+	<h3>Outcome</h3>
+	<p>The following files were successfully converted.</p>
+	<ul>
+		<?php echo $files;?>
+	</ul>
+			
